@@ -1,0 +1,49 @@
+#!/bin/bash
+echo " "
+tput setaf 1;
+echo "user name=" $USER 
+echo " "
+echo "================================="
+
+
+echo $(DATE)
+echo " "
+echo "================================="
+
+
+echo "no. of different users are -"
+users | wc -l
+echo " "
+echo "================================="
+
+cal
+echo " "
+echo "================================="
+
+echo "enter the name of the user you want to search for"
+read user
+echo " "
+echo "================================="
+
+
+echo "number of processes running under $user are -"
+ps -U $user | wc -l
+top -l 1 | grep "usage:"
+echo " "
+echo "================================="
+
+echo "total disk space"
+df -H | /usr/bin/awk '/disk1/ {print $2}'
+echo " "
+echo "================================="
+
+
+echo "free space"
+df -H | /usr/bin/awk '/disk1/ {print $4}'
+echo " "
+echo "================================="
+
+echo "used space"
+df -H | /usr/bin/awk '/disk1/ {print $3}'
+echo " "
+echo "================================="
